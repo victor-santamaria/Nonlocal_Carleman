@@ -1,12 +1,37 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Version: December, 20th 1998.
-\documentclass{amsart}    % Specifies the document style.
+\documentclass[preprint,1p]{elsarticle}
 
+\usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{epstopdf}
+\usepackage{bmpsize}
+\usepackage{epsfig}
+\usepackage{hyperref}
+\usepackage[english]{varioref}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{dcolumn}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage[mathcal]{eucal}
+\usepackage{mathrsfs}
+\usepackage{color, colortbl}
+\usepackage{microtype}
+\usepackage{longtable}
+\usepackage[toc,page]{appendix}
+\usepackage{bm}
+\usepackage{pifont}
+\usepackage{fleqn}
+\usepackage{graphicx}
+\usepackage{txfonts}
 \usepackage{fullpage}
 \usepackage{tikz}
-\usepackage{hyperref}
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
+
+\DisableLigatures{encoding = *, family = * }
 
 %\usepackage{refcheck}
 
@@ -56,32 +81,30 @@
 \newtheorem{corollary}{\bf Corollary}[section]
 \newtheorem{lemma}{\bf Lemma}[section]
 
+\title{{\bf Null controllability of a nonlocal heat equation with integral kernel}}
 
-\date{}
+\author[rvt,els]{Umberto Biccari \corref{cor1}}
+\ead{umberto.biccari@deusto.es - u.biccari@gmail.com}
 
-\title{Null controllability of a nonlocal heat equation with integral kernel}
+\author[rvt,els]{V\'ictor Hern\'andez-Santamar\'ia}
+\address[rvt]{DeustoTech, University of Deusto, 48007 Bilbao, Basque Country, Spain.}
+\address[els]{Facultad de Ingenier\'ia, Universidad de Deusto, Avenida de las Universidades 24, 48007 Bilbao, Basque Country, Spain. \texttt{umberto.biccari@deusto.es, u.biccari@gmail.com, victor.santamaria@deusto.es}}
 
-\author{Umberto Biccari\textsuperscript{1,2}}  
-\address{\textsuperscript{1}\,DeustoTech, University of Deusto, 48007 Bilbao, Basque Country, Spain.}
-\address{\textsuperscript{2}\,Facultad de Ingenier\'ia, Universidad de Deusto, Avenida de las Universidades 24, 48007 Bilbao, Basque Country, Spain, +34 944139003 - 3282.}
-\email{umberto.biccari@deusto.es, u.biccari@gmail.com, victor.santamaria@deusto.es}
-\thanks{The work of Umberto Biccari was partially supported by the Advanced Grant DYCON (Dynamic Control) of the European Research Council Executive Agency, by the MTM2014-52347 Grant of the MINECO (Spain) and by the Air Force Office of Scientific Research under the Award No: FA9550-15-1-0027.} 
-
-\author{V\'ictor Hern\'andez-Santamar\'ia\textsuperscript{1,2}}
-\thanks{The work of V\'ictor Hern\'andez-Santamar\'ia was partially supported by the
-	Advanced Grant DYCON (Dynamic Control) of the European Research Council Executive Agency.} 
-
-\keywords{Null controllability, heat equation, nonlocal terms, Carleman inequalities}
-
-\subjclass[2010]{93B05, 93B07, 93C20}
+\cortext[cor1]{Corresponding author.} 
 
 \begin{document}           
-
-\maketitle
 
 \begin{abstract}
 We consider a linear nonlocal heat equation in a bounded domain $\Omega\subset\R^d$ with Dirichlet boundary conditions. The non-locality is given by the presence of an integral kernel. We analyze the problem of controllability when the control acts on a open subset of the domain. It is by now known that the system is null-controllable when the kernel is time-independent and analytic or, in the one-dimensional case, in separated variables. In this paper we relax this assumption and we extend the result to a more general class of kernels. Moreover, we get explicit estimates on the cost of null-controllability.
 \end{abstract}
+
+\begin{keyword}
+	Null controllability \sep heat equation \sep nonlocal terms \sep Carleman inequalities
+	\\
+	\MSC[2010] 93B05, 93B07, 93C20.
+\end{keyword}
+
+\maketitle
 
 \section{Introduction and main results}\label{intro_sec}
 Let $\Omega$ be a bounded domain of $\R^d$ with boundary of class $C^2$. Given $T>0$, we set $Q:=\Omega\times (0,T)$ and $\Sigma:=\partial\Omega\times (0,T)$. Let $K=K(x,\theta,t)\in L^\infty(\Omega\times\Omega\times(0,T))$.  We consider the following linear parabolic equation involving a nonlocal space term. 
@@ -114,7 +137,7 @@ It is well known that system \eqref{e1s1} is null controllable at least in two c
 \end{itemize}
 
 In the present paper, by means of a Carleman approach, we are able to extend the above mentioned results by considering a problem in any space dimension and by weakening the assumptions on the kernel. In particular, we will only need ${K=K(x,\theta,t)}$ to be bounded and to have an exponential decay at the extrema of the time interval $[0,T]$. This is summarized in the following condition:
-
+%
 \begin{align}\label{K_est_gen}
 	\mathcal{K}=:\sup_{(x,t)\in Q} \exp\left(\frac{\varepsilon\mathcal{A}}{t(T-t)}\right)\int_{\Omega} |K(x,\theta,t)|\,d\theta < +\infty, \tag{$\mathcal{H}$}
 \end{align}
@@ -148,7 +171,7 @@ Once \eqref{e12s1} is known, Theorem \ref{control_thm} can be proved employing a
 The proof of the above inequality, in turn, relies on a global Carleman estimate, in which we pay special attention to the presence of the nonlocal term. Moreover, we mention that Carleman inequalities for equations similar to \eqref{e1s1} have been obtained in the context of the study of ill-posed problems (see, e.g., \cite{lorenzi2011two}). 
 
 Since equation \eqref{e1s1} turns out to be null-controllable in any time $T>0$, a natural issue to be analyzed is the {\it cost of null controllability} or, more precisely, the cost of driving the solution to \eqref{e1s1} from $y_0$ to zero. With this purpose, let us recall that this cost is measured by the following quantity:
-
+%
 \begin{align}\label{cost}
 	\mathcal C(y_0)=\D\inf_{v\in{\mathcal O\times(0,T)}}\norm{v}{L^2(\mathcal O\times(0,T))}\,.
 \end{align}
@@ -176,9 +199,9 @@ Let $\mathcal O\subset\subset \Omega$ be a nonempty open set. Then, there exists
 	\end{cases}
 \end{align*}
 \end{lemma}
-
+%
 For a parameter $\lambda>0$, we introduce the weight functions
-
+%
 \begin{align}\label{weight}
 	\alpha(x,t):=\frac{e^{4\lambda\norm{\eta^0}{\infty}}-e^{\lambda\left(2\norm{\eta^0}{\infty}+\eta^0(x)\right)}}{t(T-t)}, \;\;\; \xi(x,t):=\frac{e^{\lambda\left(2\norm{\eta^0}{\infty}+\eta^0(x)\right)}}{t(T-t)},
 \end{align}
@@ -228,7 +251,7 @@ For all $\varepsilon>0$ there exists $\lambda^\star=\lambda^\star(\varepsilon)>0
 \end{align}
 for any $\lambda>\lambda^\star$.
 \end{proposition}
-
+%
 \begin{proof}
 First of all, from the definitions of $\alpha^-(t)$ and $\alpha^+(t)$ (see \eqref{notation_alpha}), we have $\alpha^-(t)=F(\lambda)\alpha^+(t)$, with
 \begin{align*}
@@ -238,7 +261,7 @@ First of all, from the definitions of $\alpha^-(t)$ and $\alpha^+(t)$ (see \eqre
 It is straightforward to check that $F(\lambda)$ is a monotone increasing function, verifying $\lim_{\lambda\to+\infty} F(\lambda) = 1$ and $\lim_{\lambda\to 0^+} F(\lambda) = 1/2$ (see Figure \ref{F_lambda_fig}) 
 \begin{figure}[h]
 	\centering 
-	\begin{tikzpicture}
+	\begin{tikzpicture}[scale=0.8]
 	\pgfplotsset{settings/.style={legend cell align = {left},
 			legend pos =  south east,
 			legend style = {draw = none}}}
@@ -305,7 +328,7 @@ Let $\varphi^T\in L^2(\Omega)$ and assume that the kernel $K$ satisfies \eqref{K
 \end{align}
 for any $\lambda\geq \lambda_0$ and any $s\geq \sigma_2\left(T + T^2 + \mathcal{K}^{\frac 23}T^2\right)$.
 \end{proposition}
-
+%
 \begin{proof}
 We begin applying \eqref{carleman z} to $\varphi$, obtaining, for any $\lambda\geq C$ and any $s\geq \sigma_1\left(T + T^2\right)$ 
 \begin{align}\label{carleman_prel}
@@ -373,13 +396,11 @@ Therefore, thanks to \eqref{xi_est}, we finally obtain
 \end{align*}
 for all $s>C\mathcal{K}^{\frac 23}T^2$ and for all $\lambda\geq\max\{C,\lambda^\star(\varepsilon)\}$. This, together with \eqref{e6s2} concludes the proof.
 \end{proof}
-
-
-
+%
 \begin{remark}\label{rem_lambda}
-	
+%	
 Some comments on the above proof are in order. 	
-
+%
 \begin{enumerate}
 	\item In the proof of Proposition \ref{carleman_phi_prop}, we used inequality \eqref{alpha_min_max} for absorbing the term including the kernel $K$ into the ones on the left-hand side of \eqref{e5s2}. Notice that the value of $\lambda^\star$ that ensures the validity of that inequality depends on $\varepsilon$ when $\varepsilon\in(0,1)$, and that ${\lim_{\varepsilon\to 0+}\lambda^\star(\varepsilon)=+\infty}$. 
 	
@@ -398,9 +419,10 @@ Some comments on the above proof are in order.
 	\item  The assumption \eqref{K_est_gen} may appear as a quite strong restriction on the admissible kernels. Notwithstanding, it is instead a natural one, since the only thing that we are asking is integrability of $K$ with respect to the Carleman weight. Notice also that this decay is depending on $\varepsilon$ and, as $\varepsilon\to 0^+$, it is needed in time intervals which are shrinking more and more (see Figure \ref{kernel_fig}). Outside these intervals, instead, it is enough to consider bounded kernels, without further requirements. In other words, as $\varepsilon\to 0^+$, assumption \eqref{K_est_gen} becomes weaker, meaning that it allows more general kernels. On the other hand, due to technical reasons, we cannot take $\varepsilon=0$ (see point (1) above). 
 	
 	Finally, we mention that this is the minimum decay that we shall ask for the kernel. Indeed, following the proof of Proposition \ref{carleman_phi_prop} it is clear that imposing a weaker decay (e.g. polynomial) it is not sufficient to obtain the desired inequality.
-	
+	%
 	\begin{figure}[h]
-		\begin{tikzpicture}
+		\centering 
+		\begin{tikzpicture}[scale=0.8]
 		\pgfplotsset{settings/.style={legend cell align = {left},
 				legend pos = outer north east,
 				legend style = {draw = none}}}
@@ -414,7 +436,7 @@ Some comments on the above proof are in order.
 	\end{figure}
 \end{enumerate}
 \end{remark}
-
+%
 \begin{proof}[Proof of Theorem \ref{th2s1}]
 
 First of all, from \eqref{e5s2} we clearly have
@@ -469,7 +491,7 @@ We are interested in showing that the assumption \eqref{K_est_gen} on the decay 
 	\mathcal{M}:=\sup_{(x,t)\in\overline{Q}}\exp\left(\frac{\mathcal{B}}{T-t}\right)\int_{\Omega} |K(x,\theta,t)|\,d\theta <+\infty.
 \end{align}
 Let us now introduce the new weights $\beta$ and $\gamma$ defined as
-
+%
 \begin{align*}
 	\beta(x,t):=\frac{e^{4\lambda\norm{\eta^0}{\infty}}-e^{\lambda\left(2\norm{\eta^0}{\infty}+\eta^0(x)\right)}}{\ell(t)}, \;\;\; \gamma(x,t):=\frac{e^{\lambda\left(2\norm{\eta^0}{\infty}+\eta^0(x)\right)}}{\ell(t)},
 \end{align*}
@@ -514,11 +536,11 @@ Let $T>0$ and $e^{s\beta}F\in L^2(Q)$. Then, for any $y_0\in L^2(\Omega)$ there 
 \end{proposition} 
  
 The above discussion can now be applied to problem \eqref{e1s1}, and we have the following result.
-
+%
 \begin{theorem}\label{control_thm2} 
 Let $T>0$ and assume that $K$ satisfies \eqref{K_est_weak}. Then, for any $y_0\in L^2(\Omega)$, there exists a control function $v\in L^2(\mathcal O\times(0,T))$ such that the associated solution $y$ to \eqref{e1s1} satisfies $y(x,T) = 0$.	
 \end{theorem}	
-
+%
 \begin{proof}
 For $R>0$, we define 
 \begin{align*}
@@ -580,7 +602,7 @@ we can conclude that the couple $(y,v)$ satisfies \eqref{control_w}, i.e. $\Lamb
 Therefore, all the assumptions of Kakutani's fixed point theorem are fulfilled and we infer that there is at least one $y\in \mathcal E_R$ such that $y=\Lambda(y)$. By the definition of $\Lambda$, this implies that there exists at least one pair $(u,y)$ satisfying the
 conditions of Theorem \ref{control_thm2}. The fact that $y(x,T) = 0$ in $\Omega$ comes from the definition of the space $\mathcal E$ and the weight function $\beta$. Hence, our assertion is proved.	
 \end{proof}
-
+%
 \begin{remark}
 As we were anticipating in Section \ref{intro_sec}, even though the approach of Theorem \ref{control_thm2} has the advantage of not requiring any decay in the kernel as $t$ goes to $0^+$, a couple of issues are worth to be commented. 
 \begin{enumerate}
@@ -590,7 +612,6 @@ As we were anticipating in Section \ref{intro_sec}, even though the approach of 
 \end{enumerate}
 \end{remark}	
 
-
 \section{Additional comments and open problems}\label{comments_sec}
 
 \subsection{On the necessity of hypothesis \eqref{K_est_gen}}
@@ -598,10 +619,11 @@ As we were anticipating in Section \ref{intro_sec}, even though the approach of 
 As anticipated in Remark \ref{rem_lambda}, hypotheses on the kernel $K$ more general that just being bounded are necessary. Indeed, not imposing any assumption further than $\norm{K}{\infty}<+\infty$ may lead to the failure of the unique continuation of the solutions to the adjoint system. In fact, in absence of additional conditions on the kernel, it is possible to provide counterexamples where unique continuation (which is essential for obtaining controllability results) fails.
 
 In what follows, we present one which has been proposed by P. Gerard. Let us consider the following one-dimensional situation. Let $u\in C_0^\infty(0,1)$ be a function verifying $u(x)=0$ for $x\in(a,b)\subset(0,1)$ but not identically zero on the whole interval $(0,1)$ (see Figure \ref{figure_u}). 
-
+%
 \begin{figure}[h]
-	\pgfplotstableread{./data.org}{\datos}
-	\begin{tikzpicture}
+	\centering 
+	\pgfplotstableread{./data.txt}{\datos}
+	\begin{tikzpicture}[scale=0.8]
 	\begin{axis}[xmin = -4, xmax = 3, ymin=-0.01,xtick={-4,-2.1,0.49,3}, ytick=\empty, xticklabels={$0$,$a$,$b$,$1$}]
 	\addplot [solid,very thick, color=blue] table[x=0,y=1]{\datos};
 	\end{axis}
@@ -674,10 +696,14 @@ In the same spirit, we believe that it should not be difficult to deal with modi
 	\end{cases}
 \end{align*}
 
-\section{Acknowledgements} 
+\section*{Acknowledgements} 
+The work of Umberto Biccari was partially supported by the Advanced Grant DYCON (Dynamic Control) of the European Research Council Executive Agency, by the MTM2014-52347 Grant of the MINECO (Spain) and by the Air Force Office of Scientific Research under the Award No: FA9550-15-1-0027.
+
+The work of V\'ictor Hern\'andez-Santamar\'ia was partially supported by the Advanced Grant DYCON (Dynamic Control) of the European Research Council Executive Agency.
+
 The authors wish to thank Prof. Enrique Zuazua (Universidad Aut\'onoma de Madrid and DeustoTech) for interesting discussions on the topic of this paper. Thanks also to Cristhian Montoya (Universidad Nacional Aut\'onoma de M\'exico) for his valuable comments that helped to improve this manuscript. Finally, a special thanks goes to Prof. Patrick G\'erard (Universit\'e Paris-Sud) for suggesting the nice counterexample that helps confirming the necessity of certain hypothesis of our work.
 
- 
+\section*{Bibliography} 
 \begin{thebibliography}{99}
 
 \bibitem{fabre1995approximate} C. Fabre, J.-P. Puel and E. Zuazua. \emph{Approximate controllability of the semilinear heat equation}. Proc. Roy. Soc. Edinburgh Sec. A, 125.1 (1995), 31-61.
