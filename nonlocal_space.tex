@@ -31,6 +31,14 @@
 \usepackage{pgfplots}
 \usepackage{pgfplotstable}
 
+\usetikzlibrary{external}
+%\tikzset{external/system call={latex \tikzexternalcheckshellescape -halt-on-error
+%-interaction=batchmode -jobname "\image" "\texsource";
+%dvips -o "\image".ps "\image".dvi;
+%ps2eps "\image.ps"}}
+%\tikzexternalize[prefix=figures/]
+
+
 \DisableLigatures{encoding = *, family = * }
 
 %\usepackage{refcheck}
@@ -261,7 +269,7 @@ First of all, from the definitions of $\alpha^-(t)$ and $\alpha^+(t)$ (see \eqre
 It is straightforward to check that $F(\lambda)$ is a monotone increasing function, verifying $\lim_{\lambda\to+\infty} F(\lambda) = 1$ and $\lim_{\lambda\to 0^+} F(\lambda) = 1/2$ (see Figure \ref{F_lambda_fig}) 
 \begin{figure}[h]
 	\centering 
-	\begin{tikzpicture}[scale=0.8]
+	\begin{tikzpicture}[scale=0.9]
 	\pgfplotsset{settings/.style={legend cell align = {left},
 			legend pos =  south east,
 			legend style = {draw = none}}}
@@ -422,7 +430,7 @@ Some comments on the above proof are in order.
 	%
 	\begin{figure}[h]
 		\centering 
-		\begin{tikzpicture}[scale=0.8]
+		\begin{tikzpicture}[scale=0.9]
 		\pgfplotsset{settings/.style={legend cell align = {left},
 				legend pos = outer north east,
 				legend style = {draw = none}}}
@@ -620,15 +628,22 @@ As anticipated in Remark \ref{rem_lambda}, hypotheses on the kernel $K$ more gen
 
 In what follows, we present one which has been proposed by P. Gerard. Let us consider the following one-dimensional situation. Let $u\in C_0^\infty(0,1)$ be a function verifying $u(x)=0$ for $x\in(a,b)\subset(0,1)$ but not identically zero on the whole interval $(0,1)$ (see Figure \ref{figure_u}). 
 %
+%\begin{figure}[h]
+%	\centering 
+%	\pgfplotstableread{./data.txt}{\datos}
+%	\begin{tikzpicture}[scale=0.9]
+%	\begin{axis}[xmin = -4, xmax = 3, ymin=-0.01,xtick={-4,-2.1,0.49,3}, ytick=\empty, xticklabels={$0$,$a$,$b$,$1$}]
+%	\addplot [solid,very thick, color=blue] table[x=0,y=1]{\datos};
+%	\end{axis}
+%	\end{tikzpicture}\caption{Example of a function $u(x)$ verifying: (i) $u\in C_0^\infty(0,1)$, (ii) $u(x)=0$ for $x\in(a,b)$ and (iii) $u\not\equiv 0$ in $(0,1).$}\label{figure_u}
+%\end{figure}	
+
 \begin{figure}[h]
-	\centering 
-	\pgfplotstableread{./data.txt}{\datos}
-	\begin{tikzpicture}[scale=0.8]
-	\begin{axis}[xmin = -4, xmax = 3, ymin=-0.01,xtick={-4,-2.1,0.49,3}, ytick=\empty, xticklabels={$0$,$a$,$b$,$1$}]
-	\addplot [solid,very thick, color=blue] table[x=0,y=1]{\datos};
-	\end{axis}
-	\end{tikzpicture}\caption{Example of a function $u(x)$ verifying: (i) $u\in C_0^\infty(0,1)$, (ii) $u(x)=0$ for $x\in(a,b)$ and (iii) $u\not\equiv 0$ in $(0,1).$}\label{figure_u}
-\end{figure}	
+\centering
+\includegraphics{./nonlocal_space-figure2.pdf}
+\caption{Example of a function $u(x)$ verifying: (i) $u\in C_0^\infty(0,1)$, (ii) $u(x)=0$ for $x\in(a,b)$ and (iii) $u\not\equiv 0$ in $(0,1).$}\label{figure_u}
+\end{figure}
+%nonlocal_space-figure2
 
 Since $u$ is in particular a $L^2(0,1)$ function, we can write it in the form
 \begin{align*}
