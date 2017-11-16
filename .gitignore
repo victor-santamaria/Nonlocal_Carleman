@@ -28,3 +28,5 @@
 *.auxlock
 *.spl
 /figures
+*.fdb_latexmk
+*.fls
