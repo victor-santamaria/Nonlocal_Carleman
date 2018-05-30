@@ -58,28 +58,6 @@
 \newcommand{\R}{\mathbb{R}} 
 \newcommand{\C}{\mathbb{C}}
 
-\newcommand{\arctg}{\mathop{\hbox{\rm arctg}}\nolimits}
-\newcommand{\cotg}{\mathop{\hbox{\rm cotg}}\nolimits}
-\newcommand{\tg}{\mathop{\hbox{\rm tg}}\nolimits}
-\newcommand{\sen}{\mathop{\hbox{\rm sen}}\nolimits}
-\newcommand{\Fin}{\begin{flushright} \rule{2mm}{2mm} \end{flushright}}
-\newcommand{\Tan}{\mathop{\hbox{\rm tanh}}\nolimits}
-\newcommand{\tin}{\mathop{\hbox{\rm tany}}\nolimits}
-\newcommand{\Cos}{\mathop{\hbox{\rm cosh}}\nolimits}
-\newcommand{\Sin}{\mathop{\hbox{\rm sinh}}\nolimits}
-\newcommand{\Cot}{\mathop{\hbox{\rm coth}}\nolimits}
-\newcommand{\sg}{\mathop{\hbox{\rm sgn}}\nolimits}
-\newcommand{\lm}{\mathop{\hbox{\rm lim\,inf}}\limits}
-\newcommand{\ssup}{\mathop{\hbox{\rm sup}}\limits}
-%\newcommand{\grano}{\mathop{\hbox{\cal O}}\limits}
-\newcommand{\arc}{\mathop{\hbox{\rm arc\,cos}}\nolimits}
-\newcommand{\rightt}{\hbox{ \rule[-3mm]{0,1mm}{1cm} }}
-\newcommand{\maxx}{\mathop{\hbox{\rm max}}\limits}
-\newcommand{\spa}{\mathop{\hbox{\rm span}}\limits}
-\newcommand{\ddiv}{\mathop{\hbox{\rm div}}\limits}
-\newcommand{\Fn} {\rule{2mm}{2mm}}
-\newcommand{\llaved}{\mathop{\hbox{ \Huge $]$}}\limits}
-\newcommand{\itt}{\mathop{\hbox{\rm int}}\limits}
 \newcommand{\intd}{\displaystyle\int \kern -7pt \int}
 
 \newtheorem{definition}{\bf Definition}[section]
@@ -89,7 +67,7 @@
 \newtheorem{corollary}{\bf Corollary}[section]
 \newtheorem{lemma}{\bf Lemma}[section]
 
-\title{{\bf Null controllability of a nonlocal heat equation with integral kernel}}
+\title{{\bf Null controllability of linear and semilinear nonlocal heat equations with integral kernel}}
 
 \author[rvt,els]{Umberto Biccari \corref{cor1}}
 \ead{umberto.biccari@deusto.es - u.biccari@gmail.com}
@@ -100,16 +78,18 @@
 
 \cortext[cor1]{Corresponding author.} 
 
+\bibliographystyle{abbrv}
+
 \begin{document}           
 
 \begin{abstract}
-We consider a linear nonlocal heat equation in a bounded domain $\Omega\subset\R^d$ with Dirichlet boundary conditions. The non-locality is given by the presence of an integral kernel. We analyze the problem of controllability when the control acts on a open subset of the domain. It is by now known that the system is null-controllable when the kernel is time-independent and analytic or, in the one-dimensional case, in separated variables. In this paper we relax this assumption and we extend the result to a more general class of kernels. Moreover, we get explicit estimates on the cost of null-controllability.
+We consider a linear nonlocal heat equation in a bounded domain $\Omega\subset\R^d$ with Dirichlet boundary conditions. The non-locality is given by the presence of an integral kernel. We analyze the problem of controllability when the control acts on a open subset of the domain. It is by now known that the system is null-controllable when the kernel is time-independent and analytic or, in the one-dimensional case, in separated variables. In this paper we relax this assumption and we extend the result to a more general class of kernels. Moreover, we get explicit estimates on the cost of null-controllability that allow us to extend the result to some semilinear models.
 \end{abstract}
 
 \begin{keyword}
-	Null controllability \sep heat equation \sep nonlocal terms \sep Carleman inequalities
+	Null controllability \sep heat equation \sep nonlocal terms \sep Carleman inequalities \sep linear and semilinear systems
 	\\
-	\MSC[2010] 93B05, 93B07, 93C20.
+	\MSC[2010] 35K58, 93B05, 93B07, 93C20.
 \end{keyword}
 
 \maketitle
@@ -126,13 +106,13 @@ Let $\Omega$ be a bounded domain of $\R^d$ with boundary of class $C^2$. Given $
 	\end{cases}
 \end{align}
 
-In (\ref{e1s1}), $y=y(x,t)$ is the state and $v=v(x,t)$ is the control. The latter acts on the system through the non-empty open subset ${\mathcal O}\subset\Omega$. $\mathbf{1}_{\mathcal O}$ denotes the characteristic function of $\mathcal O$. 
+In (\ref{e1s1}), $y=y(x,t)$ is the state and $v=v(x,t)$ is the control. The latter acts on the system through the non-empty open subset ${\mathcal O}\subset\Omega$. Here, $\mathbf{1}_{\mathcal O}$ denotes the characteristic function of $\mathcal O$. 
 
 We assume that $y_0\in L^2(\Omega)$ and $v\in L^2(\mathcal O\times(0,T))$, so that system \eqref{e1s1} admits a unique solution $y$ in the class
-\begin{align*}
+\begin{align}\label{y_reg}
 	y\in L^2(0,T;H^{1}_{0}(\Omega))\cap H^1(0,T;H^{-1}(\Omega)),
-\end{align*}
-which satisfies classical energy estimates. Actually, this remains true also $v\mathbf{1}_{\mathcal O}$ is replaced by a general right-hand side $f\in L^2(0,T;H^{-1}(\Omega))$.
+\end{align}
+which satisfies classical energy estimates. Actually, this remains true also if $v\mathbf{1}_{\mathcal O}$ is replaced by a general right-hand side $f\in L^2(0,T;H^{-1}(\Omega))$.
 
 We are interested in proving the null controllability of the problem under analysis. In other words, we want to show that there exists a control function $v\in L^2(\mathcal O\times(0,T))$ such that the corresponding solution $y$ to \eqref{e1s1} satisfies $y(x,T)=0$ for all $T>0$.
 
@@ -140,16 +120,15 @@ Moreover, as mentioned in \cite{fernandez2016null}, the study of the controllabi
 
 It is well known that system \eqref{e1s1} is null controllable at least in two cases.
 \begin{itemize}
-	\item When the kernel is time-independent and analytic, one can exploit unique continuation properties and use compactness-uniqueness arguments (\cite{fernandez2016null}). In this framework, also coupled systems have been recently treated in \cite{lissy2017internal}.
-	\item When the problem is one-dimensional and the kernel is time-independent and in separated variables, the controllability follows employing spectral analysis techniques (\cite{micu2017local}).
+	\item When the kernel is time-independent and analytic, one can exploit unique continuation properties and use compactness-uniqueness arguments (\cite{fernandez2016null}). In this framework, also coupled systems have been recently treated in \cite{lissy2018internal}.
+	\item When the problem is one-dimensional and the kernel is time-independent and in separated variables, the controllability follows employing spectral analysis techniques (\cite{micu2018local}).
 \end{itemize}
 
 In the present paper, by means of a Carleman approach, we are able to extend the above mentioned results by considering a problem in any space dimension and by weakening the assumptions on the kernel. In particular, we will only need ${K=K(x,\theta,t)}$ to be bounded and to have an exponential decay at the extrema of the time interval $[0,T]$. This is summarized in the following condition:
-%
 \begin{align}\label{K_est_gen}
-	\mathcal{K}=:\sup_{(x,t)\in Q} \exp\left(\frac{\varepsilon\mathcal{A}}{t(T-t)}\right)\int_{\Omega} |K(x,\theta,t)|\,d\theta < +\infty, \tag{$\mathcal{H}$}
+	\mathcal{K}=:\sup_{(x,t)\in\overline{Q}} \exp\left(\frac{\sigma^-}{t(T-t)}\right)\int_{\Omega} |K(x,\theta,t)|\,d\theta < +\infty, \tag{$\mathcal{H}$}
 \end{align}
-for any $\varepsilon>0$, where $\mathcal{A}$ is a positive constant depending on $\Omega$ and $\mathcal{O}$ and on the parameters of the Carleman estimate. Our first main result will then be the following.
+where the constant $\sigma^-$ depends only on $\Omega$ and $\mathcal{O}$ and is related to the Carleman weight (see \eqref{notation_alpha}). Our first main result will then be the following.
 
 \begin{theorem}\label{control_thm} 
 Suppose that the kernel $K=K(x,\theta,t)\in L^\infty(\Omega\times\Omega\times(0,T))$ satisfies \eqref{K_est_gen}. Then, given $y_0\in L^2(\Omega)$ and $T>0$, there exists a control function $v\in L^2(\mathcal{O}\times (0,T))$ such that the corresponding solution to \eqref{e1s1} satisfies $y(x,T)=0$.
@@ -158,7 +137,7 @@ Suppose that the kernel $K=K(x,\theta,t)\in L^\infty(\Omega\times\Omega\times(0,
 Moreover, it is well known that this null controllability property is equivalent to the observability of the following adjoint system
 \begin{align}\label{e11s1}
 	\begin{cases}
-		\D-\varphi_t-\Delta\varphi + \int_\Omega K(x,\theta,t)\varphi(\theta,t)\,d\theta = 0, & (x,t)\in Q
+		\D-\varphi_t-\Delta\varphi + \int_\Omega K(\theta,x,t)\varphi(\theta,t)\,d\theta = 0, & (x,t)\in Q
 		\\
 		\varphi = 0, & (x,t)\in \Sigma
 		\\
@@ -168,9 +147,9 @@ Moreover, it is well known that this null controllability property is equivalent
 Therefore, in order to prove Theorem \ref{control_thm}, we are going to show that the following result holds.
 
 \begin{theorem}\label{th2s1} {\bf(Observability estimate).}
-	For any solution of \eqref{e11s1} and for any kernel $K$ satisfying \eqref{K_est_gen} there exist positive constants $C_1$ and $C_2$, depending only on $\Omega$, such that 
+	For any solution of \eqref{e11s1} and for any kernel $K$ satisfying \eqref{K_est_gen} there exist positive constants $C_1$ and $C_2$, depending only on $\Omega$ and $\mathcal O$, such that 
 	\begin{align}\label{e12s1}
-		\norm{\varphi(x,0)}{L^2(\Omega)} \leq \frac{C_1}{T} \exp\left[C_2\left(1 + \mathcal{K}^{\frac 23} +\frac
+		\norm{\varphi(x,0)}{L^2(\Omega)}^2 \leq \frac{C_1}{T} \exp\left[C_2\left(1 + \mathcal{K}^{\frac 23} +\frac
 	1T \right)\right] \intd_{{ \mathcal O}\times(0,T)}|\varphi|^{2}\,dx\,dt\,.
 	\end{align}
 \end{theorem}
@@ -188,7 +167,7 @@ It is classically known that the cost of null controllability for a heat-like eq
 
 Finally, observe that hypothesis \eqref{K_est_gen} implies that the kernel $K$ has to vanish exponentially as $t$ goes to $0^+$ and to $T^-$. Nevertheless, following the classical approach of \cite{fernandez2004local} (see also \cite{tao2016null}), it is possible to remove the decay assumption at $t=0$, but this at the price of losing any information on the controllability cost. In fact, in this case we shall argue by a fixed point procedure, implying that we do not have a constructive method to build the control. We will discuss this fact with more details later in this work.  
 
-The rest of the paper is organized as follows. In Section \ref{obs_sec}, we prove in detail the observability estimate in Theorem \ref{th2s1}, from which the proof of Theorem \ref{control_thm} follows immediately. Moreover, we will present a brief discussion concerning the null controllability cost associated to our problem. In Section \ref{decay_sec}, we show that it is possible to remove the decay assumption for the kernel at $t=0$, but with the drawback of losing an explicit constant in the observability inequality and, consequently, the possibility of analyzing the cost of null controllability. Finally, Section \ref{comments_sec} will be devoted to some additional comments and extensions.
+The rest of the paper is organized as follows. In Section \ref{obs_sec}, we prove in detail the observability estimate in Theorem \ref{th2s1}, from which the proof of Theorem \ref{control_thm} follows immediately. Moreover, we will present an abridged discussion concerning the null controllability cost associated to our problem. In Section \ref{decay_sec}, we show that it is possible to remove the decay assumption for the kernel at $t=0$, but with the drawback of losing an explicit constant in the observability inequality and, consequently, the possibility of analyzing the cost of null controllability. In Section \ref{nl_sec}, we will briefly consider the extension of our result to the semilinear case. Finally, Section \ref{comments_sec} will be devoted to some additional comments on the necessity of the hypothesis \eqref{K_est_gen}.
 
 \section{Proof of the observability inequality and of the controllability result}\label{obs_sec}
 The observability inequality for the solutions to the adjoint system \eqref{e11s1} is a consequence of a suitable global Carleman estimate. In the sequel, $C$ stands for a generic positive constant only depending on $\Omega$ and ${\mathcal O}$, whose value can change from line to line.
@@ -196,32 +175,26 @@ The observability inequality for the solutions to the adjoint system \eqref{e11s
 According to \cite[Lemma 1.1]{fursikov1996controllability}, we have the following. 
 
 \begin{lemma}
-Let $\mathcal O\subset\subset \Omega$ be a nonempty open set. Then, there exists $\eta^0\in C^2(\overline{\Omega})$ such that
-\begin{align*}
-	\begin{cases}
-		\eta^0>0, & x\in\Omega
-		\\
-		\eta^0 = 0, & x\in\partial\Omega
-		\\
-		\nabla\eta^0\neq 0, & x\in\overline{\Omega\setminus{ \mathcal O}}.
-	\end{cases}
-\end{align*}
+Let $\mathcal O\subset\subset \Omega$ be a nonempty open set. Then, there exists $\eta^0\in C^2(\overline{\Omega})$ such that $\eta^0>0$ in $\Omega$, $\eta^0=0$ on $\partial\Omega$ and $|\nabla\eta^0|> 0$ in $\overline{\Omega\setminus{ \mathcal O}}$.
 \end{lemma}
-%
-For a parameter $\lambda>0$, we introduce the weight functions
-%
+
+Now, for a parameter $\lambda>0$, we define 
+\begin{align*}
+	\sigma(x):= e^{4\lambda\norm{\eta^0}{\infty}}-e^{\lambda\left(2\norm{\eta^0}{\infty}+\eta^0(x)\right)},
+\end{align*}
+and we introduce the weight functions
 \begin{align}\label{weight}
-	\alpha(x,t):=\frac{e^{4\lambda\norm{\eta^0}{\infty}}-e^{\lambda\left(2\norm{\eta^0}{\infty}+\eta^0(x)\right)}}{t(T-t)}, \;\;\; \xi(x,t):=\frac{e^{\lambda\left(2\norm{\eta^0}{\infty}+\eta^0(x)\right)}}{t(T-t)},
+	\alpha(x,t):=\frac{\sigma(x)}{t(T-t)}, \;\;\;\;\;\;\;\;\; \xi(x,t):=\frac{e^{\lambda\left(2\norm{\eta^0}{\infty}+\eta^0(x)\right)}}{t(T-t)}.
 \end{align}
-and we will use the notation 
+Moreover, in what follows we will use the notation 
 \begin{align}\label{notation_alpha}
-	\alpha^+(t):= \max_{x\in\overline{\Omega}}\alpha(x,t), \;\;\; \alpha^-(t):= \min_{x\in\overline{\Omega}}\alpha(x,t). 
+	\sigma^+:= \max_{x\in\overline{\Omega}}\sigma(x)=e^{4\lambda\norm{\eta^0}{\infty}}-e^{2\lambda\norm{\eta^0}{\infty}}, \;\;\;\;\;\;\;\;\; \sigma^-:= \min_{x\in\overline{\Omega}}\sigma(x)=e^{4\lambda\norm{\eta^0}{\infty}}-e^{3\lambda\norm{\eta^0}{\infty}}, 
 \end{align}
-Moreover, we introduce the following quantity 
+and we introduce the following quantity to abridge the computations
 \begin{align*}
 	\mathcal I(\cdot):= s\lambda^2\intd_Q e^{-2s\alpha}\xi|\nabla \cdot|^2\,dx\,dt + s^3\lambda^4\intd_Q e^{-2s\alpha}\xi^3|\cdot|^2\,dx\,dt.
 \end{align*}	
-Furthermore, in what follows we are going to use the estimate
+Finally, for our further results we are going to use the estimate
 \begin{align}\label{xi_est}
 	\xi(t)^{-\nu}\leq CT^{2\nu},\;\;\;\forall\nu>0.
 \end{align}
@@ -245,28 +218,28 @@ satisfies
 \end{align}
 Moreover, $s_1$ is of the form 
 \begin{align}\label{e6s2}
-	s_1 = \sigma_1\left(T+T^2\right).
+	s_1 = \varrho_1\left(T+T^2\right).
 \end{align}
-where $\sigma_1$ is a positive constant that only depends on $\Omega$ and $\mathcal O$.
+where $\varrho_1$ is a positive constant that only depends on $\Omega$ and $\mathcal O$.
 \end{proposition}
 
-Furthermore, in what follows we will need the following result (see \cite[Lemma 6.1]{montoya2017robust}, \cite{gueye2013insensitizing}). 
+Furthermore, in what follows we will need the following technical result, whose proof is inspired by \cite[Lemma 6.1]{montoya2017robust}. 
 
 \begin{proposition}\label{alpha_min_max_prop}
-For all $\varepsilon>0$ there exists $\lambda^\star=\lambda^\star(\varepsilon)>0$ such that 
+For any fixed $\lambda>0$ and $s>1$ it holds
 \begin{align}\label{alpha_min_max}
-	e^{-s(1+\varepsilon)\alpha^-(t)}< e^{-s\alpha^+(t)},
+	\exp\left(-\frac{(1+s)\sigma^-}{t(T-t)}\right)< \exp\left(-\frac{s\sigma^+}{t(T-t)}\right),
 \end{align}
-for any $\lambda>\lambda^\star$.
+where $\sigma^-$ and $\sigma^+$ have bee introduced in \eqref{alpha_min_max}.
 \end{proposition}
 %
 \begin{proof}
-First of all, from the definitions of $\alpha^-(t)$ and $\alpha^+(t)$ (see \eqref{notation_alpha}), we have $\alpha^-(t)=F(\lambda)\alpha^+(t)$, with
+First of all, from the definitions of $\sigma^-$ and $\sigma^+$ (see \eqref{notation_alpha}), we have $\sigma^-=F(\lambda)\sigma^+$, with
 \begin{align*}
 	F(\lambda):=\frac{e^{2\lambda\norm{\eta^0}{\infty}}-e^{\lambda\norm{\eta^0}{\infty}}}{e^{2\lambda\norm{\eta^0}{\infty}}-1}.
 \end{align*}
 
-It is straightforward to check that $F(\lambda)$ is a monotone increasing function, verifying $\lim_{\lambda\to+\infty} F(\lambda) = 1$ and $\lim_{\lambda\to 0^+} F(\lambda) = 1/2$ (see Figure \ref{F_lambda_fig}) 
+It is straightforward to check that $F(\lambda)$ is a monotone increasing function, verifying $\lim_{\lambda\to+\infty} F(\lambda) = 1$ and $\lim_{\lambda\to 0^+} F(\lambda) = 1/2$ (see Figure \ref{F_lambda_fig}). 
 \begin{figure}[h]
 	\centering 
 	\begin{tikzpicture}[scale=0.9]
@@ -280,169 +253,94 @@ It is straightforward to check that $F(\lambda)$ is a monotone increasing functi
 		\end{axis}
 	\end{tikzpicture}\caption{Profile of the function $F(\lambda)$ for $\lambda\geq 0$.}\label{F_lambda_fig}
 \end{figure}
-
-Moreover, we claim that for all $\varepsilon>0$ there exists $\lambda^\star=\lambda^\star(\varepsilon)>0$ such that 
+Moreover, since $s>1$ we have 
 \begin{align}\label{F_lambda_est}
-	F(\lambda) + \varepsilon F(\lambda)> 1.
+	(1+s)F(\lambda)> 2F(\lambda)> 1.
 \end{align}
-If this is the case, multiplying both sides of \eqref{F_lambda_est} by $s\alpha^+(t)$ we immediately have 
+Then, multiplying both sides of \eqref{F_lambda_est} by $\sigma^+$, and since $[t(T-t)]^{-1}>0$, we immediately have 
 \begin{align*}
-	s\alpha^+(t)\left[1-(1+\varepsilon)F(\lambda)\right]< 0.
+	\sigma^+[t(T-t)]^{-1}\Big(1-(1+s)F(\lambda)\Big)< 0.
 \end{align*}
 Hence
 \begin{align*}
-e^{s\alpha^+(t)\left[1-(1+\varepsilon)F(\lambda)\right]}< 1
+	\exp\left(\frac{\sigma^+}{t(T-t)}\Big(1-(1+s)F(\lambda)\Big)\right)< 1
 \end{align*}
 and we can conclude
 \begin{align*}
-e^{s\alpha^+(t)} < e^{s(1+\varepsilon)F(\lambda)\alpha^+(t)} = e^{s(1+\varepsilon)\alpha^-(t)}.
+	\exp\left(\frac{s\sigma^+}{t(T-t)}\right) < \exp\left(\frac{(1+s)F(\lambda)\sigma^+}{t(T-t)}\right) = \exp\left(\frac{(1+s)\sigma^-}{t(T-t)}\right).
 \end{align*}
-
-Therefore, it only remains to prove \eqref{F_lambda_est}. First of all, since $e^{2\lambda\norm{\eta^0}{\infty}}>1$, the inequality  may be rewritten as
-\begin{align}\label{G_lambda}
-	G(\lambda):=\varepsilon e^{2\lambda\norm{\eta^0}{\infty}} - (1+\varepsilon)e^{\lambda\norm{\eta^0}{\infty}} + 1> 0.
-\end{align}
-
-Moreover, \eqref{G_lambda} can be seen as a second order inequality in the variable $e^{\lambda\norm{\eta^0}{\infty}}$, whose discriminant is given by $\Delta = (1-\varepsilon)^2$. Hence, we shall distinguish between two cases:
-\begin{itemize}
-	\item[(i)] $\Delta = 0\Rightarrow \varepsilon=1$;
-	\item[(ii)] $\Delta>0\Rightarrow \varepsilon\neq 1$.
-\end{itemize}
-In the case (i) we easily obtain 
-\begin{align*}
-	G(\lambda)=\left(e^{\lambda\norm{\eta^0}{\infty}}-1\right)^2>0
-\end{align*} 
-for all $\lambda>0$. In the case (ii), instead, we can readily check that the roots of $G(\lambda)=0$ are given by 
-\begin{align*}
-	\lambda_1:=\frac{1}{\norm{\eta^0}{\infty}}\log\left(\frac 1\varepsilon\right),\;\;\; \lambda_2:=0.
-\end{align*}
-
-Therefore, for $\varepsilon>1$ we have $\lambda_2>\lambda_1$ and, consequently, \eqref{G_lambda} holds for all $\lambda>\lambda_2$. For $0<\varepsilon<1$, instead, we have $\lambda_1>\lambda_2$ and \eqref{G_lambda} holds for all $\lambda>\lambda_1$. Summarizing, we finally have that the estimate \eqref{F_lambda_est} holds for all $\lambda>\lambda^\star(\varepsilon)$, with
-\begin{align}\label{lambda_zero}
-	\lambda^\star(\varepsilon):=\begin{cases}
-	\D\frac{1}{\norm{\eta^0}{\infty}}\log\left(\frac 1\varepsilon\right), & 0<\varepsilon<1,
-	\\
-	0, & \varepsilon\geq 1.
-	\end{cases}
-\end{align}
+From this, \eqref{alpha_min_max} follows immediately.
 \end{proof}
 
 Proposition \ref{carleman z_prop} can now be applied to the solutions to \eqref{e11s1}, and we obtain the following Carleman estimate.
 
 \begin{proposition}\label{carleman_phi_prop} 
-Let $\varphi^T\in L^2(\Omega)$ and assume that the kernel $K$ satisfies \eqref{K_est_gen}. Then, there exist positive constants $C$, $\lambda_0(\varepsilon)$ and $\sigma_2$ such that the solution $\varphi$ to \eqref{e11s1} corresponding to the initial datum $\varphi^T$ satisfies  
+Let $\varphi^T\in L^2(\Omega)$ and assume that the kernel $K$ satisfies \eqref{K_est_gen}. Then, there exist positive constants $C$, $\lambda_0$ and $\varrho_2$, only depending on $\Omega$ and $\mathcal O$, such that the solution $\varphi$ to \eqref{e11s1} corresponding to the initial datum $\varphi^T$ satisfies  
 \begin{align}\label{e5s2}
 	\mathcal{I}(\varphi) \leq C s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt, 
 \end{align}
-for any $\lambda\geq \lambda_0$ and any $s\geq \sigma_2\left(T + T^2 + \mathcal{K}^{\frac 23}T^2\right)$.
+for any $\lambda\geq \lambda_0$ and any $s\geq \varrho_2\left(T + T^2 + \mathcal{K}^{\frac 23}T^2\right)$.
 \end{proposition}
 %
 \begin{proof}
-We begin applying \eqref{carleman z} to $\varphi$, obtaining, for any $\lambda\geq C$ and any $s\geq \sigma_1\left(T + T^2\right)$ 
+We begin applying \eqref{carleman z} to $\varphi$, obtaining, for any $\lambda\geq C$ and any $s\geq \varrho_1\left(T + T^2\right)$ 
 \begin{align}\label{carleman_prel}
-	\mathcal{I}(\varphi) \leq C \left[s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt + \intd_Q e^{-2s\alpha}\left|\int_{\Omega} K(x,\theta,t)\varphi(\theta,t)\,d\theta\,\right|^2\,dx\,dt\right]
+	\mathcal{I}(\varphi) \leq C \left[s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt + \intd_Q e^{-2s\alpha}\left|\int_{\Omega} K(\theta,x,t)\varphi(\theta,t)\,d\theta\,\right|^2\,dx\,dt\right].
 \end{align}
 
-We are now going to deal with the second term on the right-hand side of the previous estimate. We have
+We are now going to deal with the second term on the right-hand side of the previous estimate. To this end, we set the parameter  $\lambda$ to a fixed value large enough. We have
 \begin{align}\label{ker_int}
-	\left|\int_\Omega K(x,\theta)\varphi(\theta,t)\,\right| & = \left|\int_{\Omega} e^{\varepsilon s\alpha(\theta,t)}K(x,\theta,t)e^{-\varepsilon s\alpha(\theta,t)}\varphi(\theta,t)\,d\theta\,\right| \notag
+	\left|\int_\Omega K(\theta,x,t)\varphi(\theta,t)\,d\theta\,\right| & = \left|\int_{\Omega} e^{\frac{\sigma^-}{t(T-t)}}K(\theta,x,t)e^{-\frac{\sigma^-}{t(T-t)}}\varphi(\theta,t)\,d\theta\,\right| \notag
 	\\	
-	&\leq \left[\left(\int_\Omega e^{2\varepsilon s\alpha^+(t)}|K(x,\theta,t)|^2\,d\theta\right)\left(\int_\Omega e^{-2\varepsilon s\alpha(\theta,t)}|\varphi(x,\theta)|^2\,d\theta\right)\right]^{\frac 12}.
+	&\leq \left[\left(\int_\Omega e^{\frac{2\sigma^-}{t(T-t)}}|K(\theta,x,t)|^2\,d\theta\right)\left(\int_\Omega e^{-\frac{2\sigma^-}{t(T-t)}}|\varphi(x,\theta)|^2\,d\theta\right)\right]^{\frac 12}.
 \end{align}
-Moreover, by definition we have
+
+Notice that, since $\lambda$ has been fixed, $\sigma^-$ (and therefore $\sigma^+$) is a constant depending only on $\Omega$ and $\mathcal O$. Now, replacing \eqref{ker_int} into \eqref{carleman_prel} we get
 \begin{align*}
-	\alpha^+(t)=\frac{C(\Omega,\mathcal{O},\lambda)}{t(T-t)}.
-\end{align*}	
-Therefore,
-\begin{align}\label{ker_int2}
-\int_\Omega e^{2\varepsilon s\alpha^+(t)}|K(x,\theta,t)|^2\,d\theta = \int_\Omega e^{\frac{2\varepsilon sC}{t(T-t)}}|K(x,\theta,t)|^2\,d\theta = \int_\Omega e^{\frac{\mathcal{A}\varepsilon}{t(T-t)}}|K(x,\theta,t)|^2\,d\theta \leq \mathcal{K}^2,
-\end{align}
-where the constant $\mathcal{A}$ depends on $\Omega$, $\mathcal{O}$, $\lambda$ and $s$. Thus, from \eqref{carleman_prel}, \eqref{ker_int} and \eqref{ker_int2} we obtain 
-\begin{align*}
-	\mathcal{I}(\varphi) \leq C \left[s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt + \mathcal{K}^2\intd_Q e^{-2s\alpha(x,t)}\left(\int_{\Omega} e^{-2\varepsilon s\alpha(\theta,t)}|\varphi(\theta,t)|^2\,d\theta\,\right)\,dx\,dt\right].
+	\mathcal{I}(\varphi) \leq C \left[s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt + \mathcal{K}^2\intd_Q e^{-2s\alpha(x,t)}\left(\int_{\Omega} e^{-\frac{2\sigma^-}{t(T-t)}}|\varphi(\theta,t)|^2\,d\theta\,\right)\,dx\,dt\right].
 \end{align*}
 
 Let us now focus on the second term in the right-hand side of the above inequality. Using Fubini's Theorem we get
 \begin{align*}
-	\intd_Q e^{-2s\alpha(x,t)} & \left(\int_{\Omega} e^{-2\varepsilon s\alpha(\theta,t)}|\varphi(\theta,t)|^2\,d\theta\,\right)\,dx\,dt = \intd_Q e^{-2\varepsilon s\alpha(\theta,t)}|\varphi(\theta,t)|^2\left(\int_\Omega e^{-2s\alpha(x,t)}\,dx\right)\,d\theta\,dt.
+	\intd_Q e^{-2s\alpha(x,t)} \left(\int_{\Omega} e^{-\frac{2\sigma^-}{t(T-t)}}|\varphi(\theta,t)|^2\,d\theta\,\right)\,dx\,dt = \intd_Q e^{-\frac{2\sigma^-}{t(T-t)}}|\varphi(\theta,t)|^2\left(\int_\Omega e^{-2s\alpha(x,t)}\,dx\right)\,d\theta\,dt.
 \end{align*}
 Notice that, according to \eqref{notation_alpha}, we have
 \begin{align*}
-	\int_\Omega e^{-2s\alpha(x,t)}\,dx \leq |\Omega| e^{-2s\alpha^-(t)},
+	\int_\Omega e^{-2s\alpha(x,t)}\,dx \leq |\Omega| e^{-\frac{2s\sigma^-}{t(T-t)}},
 \end{align*}
 where $|\Omega|$ stands for the measure of $\Omega$. Hence, we can compute
 \begin{align*}
-	\intd_Q e^{-2\varepsilon s\alpha(\theta,t)}|\varphi(\theta,t)|^2\left(\int_\Omega e^{-2s\alpha(x,t)}\,dx\right)\,d\theta\,dt & \leq C \intd_Q e^{-2\varepsilon s\alpha(\theta,t)}e^{-2s\alpha^-(t)}|\varphi(\theta,t)|^2\,d\theta\,dt
+	\intd_Q e^{-\frac{2\sigma^-}{t(T-t)}}|\varphi(\theta,t)|^2\left(\int_\Omega e^{-2s\alpha(x,t)}\,dx\right)\,d\theta\,dt &\leq C \intd_Q e^{-\frac{2(1+s)\sigma^-}{t(T-t)}}|\varphi(\theta,t)|^2\,d\theta\,dt
 	\\
-	& = C \intd_Q e^{-2\varepsilon s\alpha(\theta,t)}e^{-2s(1+\varepsilon)\alpha^-(t)}e^{2s\varepsilon\alpha^-(t)}|\varphi(\theta,t)|^2\,d\theta\,dt
+	&\leq C\intd_Q e^{-\frac{2s\sigma^+}{t(T-t)}}|\varphi(\theta,t)|^2\,d\theta\,dt 
 	\\
-	& \leq C \intd_Q e^{-2s(1+\varepsilon)\alpha^-(t)}|\varphi(\theta,t)|^2\,d\theta\,dt.
+	&\leq C \intd_Q e^{-2s\alpha(\theta,t)}|\varphi(\theta,t)|^2\,d\theta\,dt,
 \end{align*}	
-Moreover, we recall that from Proposition \ref{alpha_min_max_prop} we have 
-\begin{align*}
-	e^{-s(1+\varepsilon)\alpha^-(t)}\leq e^{-s\alpha^+(t)},
-\end{align*}
-for any $\lambda >\lambda^\star(\varepsilon)$, where $\lambda^\star(\varepsilon)$ is given in \eqref{lambda_zero}. Whence, from the definitions \eqref{notation_alpha} of $\alpha^+$ and $\alpha^-$ we obtain
-\begin{align*}
-	\intd_Q e^{-2\varepsilon s\alpha(\theta,t)} e^{-2s(1+\varepsilon)\alpha^-(t)}  e^{2s\varepsilon\alpha^-(t)}|\varphi(\theta,t)|^2\,d\theta\,dt & \leq C \intd_Q e^{-2s\alpha^+(t)}|\varphi(\theta,t)|^2\,d\theta\,dt
-	\\
-	& \leq C \intd_Q e^{-2s\alpha(\theta,t)}|\varphi(\theta,t)|^2\,d\theta\,dt.
-\end{align*}
-Thus, we get
+were we have used Proposition \ref{alpha_min_max_prop} and the definition of $\sigma^+$. Putting all together, we get
 \begin{align*}
 	\mathcal{I}(\varphi) \leq C \left[s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt + \mathcal{K}^2\intd_Q e^{-2s\alpha(x,t)}|\varphi(x,t)|^2\,dx\,dt\right].
 \end{align*}
 Recalling now the definition of $\mathcal{I}(\varphi)$, we then find the following estimate
-\begin{align*}
-	s\lambda^2\intd_Q e^{-2s\alpha}\xi & |\nabla \varphi|^2\,dx\,dt + s^3\lambda^4\intd_Q e^{-2s\alpha}\xi^3|\varphi|^2\,dx\,dt 
+\begin{align}\label{carleman_prel3}
+	s\lambda^2\intd_Q e^{-2s\alpha}\xi & |\nabla \varphi|^2\,dx\,dt + s^3\lambda^4\intd_Q e^{-2s\alpha}\xi^3|\varphi|^2\,dx\,dt \notag
 	\\
 	&- \mathcal{K}^2\intd_Q e^{-2s\alpha}|\varphi|^2\,dx\,dt \leq C s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt.
-\end{align*}
+\end{align}
 Therefore, thanks to \eqref{xi_est}, we finally obtain
 \begin{align*}
 	s\lambda^2\intd_Q e^{-2s\alpha}\xi |\nabla \varphi|^2\,dx\,dt + s^3\lambda^4\intd_Q e^{-2s\alpha}\xi^3|\varphi|^2\,dx\,dt \leq C s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt,
 \end{align*}
-for all $s>C\mathcal{K}^{\frac 23}T^2$ and for all $\lambda\geq\max\{C,\lambda^\star(\varepsilon)\}$. This, together with \eqref{e6s2} concludes the proof.
+for all $s>C\mathcal{K}^{\frac 23}T^2$. This, together with \eqref{e6s2} concludes the proof.
 \end{proof}
 %
 \begin{remark}\label{rem_lambda}
-%	
-Some comments on the above proof are in order. 	
-%
-\begin{enumerate}
-	\item In the proof of Proposition \ref{carleman_phi_prop}, we used inequality \eqref{alpha_min_max} for absorbing the term including the kernel $K$ into the ones on the left-hand side of \eqref{e5s2}. Notice that the value of $\lambda^\star$ that ensures the validity of that inequality depends on $\varepsilon$ when $\varepsilon\in(0,1)$, and that ${\lim_{\varepsilon\to 0+}\lambda^\star(\varepsilon)=+\infty}$. 
+The hypothesis \eqref{K_est_gen} plays a fundamental role in the previous proof. Notice that, according to this assumption, the kernel $K$, as a function of $t$, should behave like 
+\begin{align*}
+	K(\cdot,\cdot,t)\sim e^{-\frac{C(\Omega,\mathcal O)}{t(T-t)}},
+\end{align*}
+i.e. it should decay exponentially as $t$ goes to $0^+$ and $T^-$. We stress that this constant $C$ does not depend on the parameter $s$ and, therefore, in the last step of the above proof there is no obstruction in using this parameter for absorbing the third term on the left hand side of the estimate \eqref{carleman_prel3}.
 	
-	One may think that this is an issue when using \eqref{alpha_min_max} for proving the Carleman estimate. Nevertheless, this is not the case due to the following two facts:
-	\begin{itemize}
-		\item the value $\varepsilon=0$ is not allowed, and this implies that $\lambda^\star$, even if it is large, it is always finite;
-		\item the inequality is true for any $s>0$. Therefore, no matter how large is $\lambda$, once this parameter has been fixed the term including the kernel can still be absorbed choosing $s=s(\lambda)$ large enough. 
-	\end{itemize}
-	
-	\item The hypothesis \eqref{K_est_gen} plays a fundamental role in the previous proof. Notice that, according to this assumption, the kernel $K$, as a function of $t$, should behave like 
-	\begin{align*}
-		K(\cdot,\cdot,t)\sim e^{-\frac{\mathcal{A}(s,\lambda)\varepsilon}{t(T-t)}},
-	\end{align*}
-	i.e. it should decay exponentially as $t$ goes to $0^+$ and $T^-$. We stress that, even if $\mathcal{A}$ depends on $s$ and $\lambda$, from the computations that we presented above it is clear that the constant $\mathcal{K}$ is independent of these two parameters.
-	
-	\item  The assumption \eqref{K_est_gen} may appear as a quite strong restriction on the admissible kernels. Notwithstanding, it is instead a natural one, since the only thing that we are asking is integrability of $K$ with respect to the Carleman weight. Notice also that this decay is depending on $\varepsilon$ and, as $\varepsilon\to 0^+$, it is needed in time intervals which are shrinking more and more (see Figure \ref{kernel_fig}). Outside these intervals, instead, it is enough to consider bounded kernels, without further requirements. In other words, as $\varepsilon\to 0^+$, assumption \eqref{K_est_gen} becomes weaker, meaning that it allows more general kernels. On the other hand, due to technical reasons, we cannot take $\varepsilon=0$ (see point (1) above). 
-	
-	Finally, we mention that this is the minimum decay that we shall ask for the kernel. Indeed, following the proof of Proposition \ref{carleman_phi_prop} it is clear that imposing a weaker decay (e.g. polynomial) it is not sufficient to obtain the desired inequality.
-	%
-	\begin{figure}[h]
-		\centering 
-		\begin{tikzpicture}[scale=0.9]
-		\pgfplotsset{settings/.style={legend cell align = {left},
-				legend pos = outer north east,
-				legend style = {draw = none}}}
-		\begin{axis}[settings,xmin=0,xmax=1,xtick={0,1},ytick={0,1},xticklabels={$0$,T}]
-		
-		\addplot[domain=0.0001:0.9999, samples=500, very thick,dotted]{exp(-0.5/((x*(1-x)))};\addlegendentry{$\;\;\varepsilon = 0.5$};
-		\addplot[domain=0.0001:0.9999, samples=500, very thick,color=red,dashed]{exp(-0.1/((x*(1-x)))};\addlegendentry{$\;\;\varepsilon = 10^{-1}$};
-		\addplot[domain=0.0001:0.9999, samples=500,thick,color=blue]{exp(-0.001/((x*(1-x)))};\addlegendentry{$\;\;\varepsilon = 10^{-3}$};
-		\end{axis}
-		\end{tikzpicture}\caption{Decay in the time variable of $e^{-\frac{\mathcal{A}\varepsilon}{t(T-t)}}$ for different values of $\varepsilon$. }\label{kernel_fig}
-	\end{figure}
-\end{enumerate}
+The assumption \eqref{K_est_gen} may appear as a quite strong restriction on the admissible kernels. Notwithstanding, it is instead a natural one, since the only thing that we are asking is integrability of $K$ with respect to the Carleman weight. Moreover, we mention that this is the minimum decay that we shall ask for the kernel. Indeed, following the proof of Proposition \ref{carleman_phi_prop} it is clear that imposing a weaker decay (e.g. polynomial) it is not sufficient to obtain the desired inequality.
 \end{remark}
 %
 \begin{proof}[Proof of Theorem \ref{th2s1}]
@@ -486,11 +384,11 @@ On the other hand, it is well-known that this controllability cost may also be c
 	\mathcal C(y_0)=\inf_{C>0}\left\{\norm{\varphi(x,0)}{L^2(\Omega)} \leq C^2 \intd_{{ \mathcal O}\times(0,T)}|\varphi|^{2}\,dx\,dt\,\right\}.
 \end{align*}
 Applied to our problem, this gives the estimate
-\begin{align*}
+\begin{align}\label{cost_est}
 	\mathcal C(y_0)\leq\exp\left[C\left(1+\frac{1}{T}+\mathcal{K}^{\frac 23}\right)\right].
-\end{align*}
+\end{align}
 
-In particular, as it is natural to expect for a heat-like equation, the null controllability cost blows-up as $T\to 0^+$. This means that, even if equation \eqref{e1s1} is null controllable for any time $T>0$, the cost of this process is growing exponentially as the time interval $(0,T)$ shrinks.
+In particular, as it is natural to expect for a heat-like equation, the null controllability cost blows-up as $T\to 0^+$. This means that, even if equation \eqref{e1s1} is null controllable for any time $T>0$, the cost of this process is growing exponentially as the time interval $(0,T)$ shrinks. Lastly, observe that $\mathcal K^{\frac 23}$ in \eqref{cost_est} is in accordance with the classical results on the controllability of heat equations with bounded potentials (see, e.g., \cite{fernandez2000cost}).
 
 \section{Removing the assumption on the decay of the kernel in $t=0$}\label{decay_sec}
 
@@ -550,11 +448,11 @@ Let $T>0$ and assume that $K$ satisfies \eqref{K_est_weak}. Then, for any $y_0\i
 \end{theorem}	
 %
 \begin{proof}
-For $R>0$, we define 
+For our proof we are going to employ a fixed point strategy. For $R>0$, we define 
 \begin{align*}
 	\mathcal E_R:=\left\{ w\in\mathcal E\,:\, \norm{e^{s\beta}w}{L^2(Q)}\leq R\right\},
 \end{align*}
-which is a bounded, closed and convex subset of $L^2(Q)$. For any $w\in\mathcal E_R$, let us consider the linear control problem 
+which is a bounded, closed and convex subset of $L^2(Q)$. For any $w\in\mathcal E_R$, let us consider the control problem 
 \begin{align}\label{control_w}
 	\begin{cases}
 		\D y_t - \Delta y + \int_\Omega K(x,\theta,t)w(\theta,t)\,d\theta = v\mathbf{1}_{\mathcal O}, & (x,t)\in Q
@@ -564,7 +462,7 @@ which is a bounded, closed and convex subset of $L^2(Q)$. For any $w\in\mathcal 
 		y(x,0) = y_0(x), & x\in\Omega.
 	\end{cases}
 \end{align}	
-From hypothesis \eqref{K_est_weak} we have that
+Notice that \eqref{control_w} is different from the original system \eqref{e1s1}, since it is linear in the $y$ variable. Now, from hypothesis \eqref{K_est_weak} we have that
 \begin{align*}
 	\intd_Q\left(e^{s\beta}\int_\Omega K(x,\theta,t)w(\theta,t)\,d\theta\right)^2\,dxdt \leq \mathcal M^2\intd_Q e^{2s\beta}w^2e^{-2s\beta}\,dxdt \leq \mathcal M^2R^2.
 \end{align*}
@@ -578,8 +476,9 @@ In order to conclude our proof and obtain the same controllability result for $w
 
 It is easy to check that $\Lambda(w)$ is a nonempty, closed and convex subset of $L^2(Q)$. Moreover, by \eqref{K_est_weak} and \eqref{energy_weight} and arguing as before we have
 \begin{align}\label{estimate}
-	\intd_{\mathcal O\times(0,T)} e^{2s\beta}\gamma^{-3} |v|^2\,dx\,dt + \intd_Q e^{2s\beta}|y|^2\,dx\,dt 
-&\leq C \left[\norm{y_0}{L^2(\Omega)}^2 + \intd_Qe^{2s\beta}\left(\int_\Omega K(x,\theta,t)y(\theta,t)\,d\theta\right)^2\,dxdt\right] \notag 
+	\intd_{\mathcal O\times(0,T)} e^{2s\beta}\gamma^{-3} |v|^2\,dx\,dt & + \intd_Q e^{2s\beta}|y|^2\,dx\,dt \notag 
+	\\
+	&\leq C \left[\norm{y_0}{L^2(\Omega)}^2 + \intd_Qe^{2s\beta}\left(\int_\Omega K(x,\theta,t)y(\theta,t)\,d\theta\right)^2\,dxdt\right] \notag 
 	\\
 	&\leq C\left(\mathcal M^2R^2 + \norm{y_0}{L^2(\Omega)}^2\right) \leq CR^2,
 \end{align}
@@ -612,17 +511,106 @@ conditions of Theorem \ref{control_thm2}. The fact that $y(x,T) = 0$ in $\Omega$
 \end{proof}
 %
 \begin{remark}
-As we were anticipating in Section \ref{intro_sec}, even though the approach of Theorem \ref{control_thm2} has the advantage of not requiring any decay in the kernel as $t$ goes to $0^+$, a couple of issues are worth to be commented. 
-\begin{enumerate}
-	\item Due to the nature of the fixed point procedure that we employed, we lose the uniqueness of the control function $v$. In particular, we are not able to identify a distinguished control with a constructive procedure. As a consequence of this fact, we also lose information about the cost of null controllability. Indeed, when a control can be computed by minimizing, for instance, the functional \eqref{functional_J}, the null controllability cost is related to the square root of the constant in the observability inequality \eqref{e12s1}. On the other hand, since the proof of Theorem \ref{control_thm2} does not requires any observability, in that case we cannot recover any explicit expression for $\mathcal C(y_0)$.
+As we were anticipating in Section \ref{intro_sec}, even though the approach of Theorem \ref{control_thm2} has the advantage of not requiring any decay in the kernel as $t$ goes to $0^+$, due to the nature of the employed fixed point argument we lose the uniqueness of the control function $v$. In particular, we are not able to identify a distinguished control with a constructive procedure. As a consequence of this fact, we also lose information about the cost of null controllability. Indeed, when a control can be computed by minimizing, for instance, the functional \eqref{functional_J}, the null controllability cost is related to the square root of the constant in the observability inequality \eqref{e12s1}. On the other hand, since the proof of Theorem \ref{control_thm2} does not requires any observability, in that case we cannot recover any explicit expression for $\mathcal C(y_0)$.
+\end{remark}
+
+\section{Extension to semilinear problems}\label{nl_sec}
+
+The approach of Theorem \ref{control_thm} may be combined with the methodology presented in \cite{fabre1995approximate,fernandez1999approximate,fernandez1997null,zuazua1991exact} to deduce similar controllability results for the semilinear heat equation with globally Lipschitz nonlinearity  
+\begin{align}\label{heat_nl}
+\begin{cases}
+\D y_t - \Delta y + \int_\Omega K(x,\theta,t)y(\theta,t)\,d\theta = f(y) + v\mathbf{1}_{\mathcal O}, & (x,t)\in Q
+\\
+y = 0, & (x,t)\in\Sigma
+\\
+y(x,0) = y_0(x), & x\in\Omega.
+\end{cases}
+\end{align}
+In more detail, it is possible to prove the following result.
+\begin{theorem}\label{control_thm_nl}
+Assume $f\in C^1(\R)$ is globally Lipschitz with $f(0)=0$. Then, given any $y_0\in L^2(\Omega)$ and $T>0$ there exists a control function $v\in L^2(\mathcal O\times(0,T))$ such that the solution to \eqref{heat_nl} satisfies $y(x,T)=0$.
+\end{theorem}
+
+\begin{proof}[Sketch of the proof]
+The proof of this result is by now standard and it uses well-known results on the controllability of nonlinear systems (\cite{fabre1995approximate,fernandez1999approximate,fernandez1997null,zuazua1991exact}). For the sake of completeness, we sketch below the main steps. 	
 	
-	\item Note that in the hypothesis \eqref{K_est_weak} we have a prescribed decay, i.e. not depending on the parameter $\varepsilon$. This arises naturally from the energy estimate \eqref{energy_weight}, which inherits the weight from the refined Carleman inequality \eqref{carleman_z_ref}.
-\end{enumerate}
-\end{remark}	
+Since $f\in C^1(\R)$, we can introduce the function $g:\R\to\R$ defined as
+\begin{align*}
+	g(s):=\begin{cases}
+		\displaystyle \frac{f(s)}{s}, & \textrm{ if } s\neq 0
+		\\[6pt]
+		f'(0), & \textrm{ if } s=0.
+	\end{cases}	
+\end{align*}
+Then, for all $\eta\in L^2(Q)$ we can consider the following linearized version of \eqref{heat_nl}
+\begin{align}\label{heat_lin}
+	\begin{cases}
+		\D y_t - \Delta y + \int_\Omega K(x,\theta,t)y(\theta,t)\,d\theta = g(\eta)y + v\mathbf{1}_{\mathcal O}, & (x,t)\in Q
+		\\
+		y = 0, & (x,t)\in\Sigma
+		\\
+		y(x,0) = y_0(x), & x\in\Omega.
+	\end{cases}
+\end{align}
+	
+The continuity of $f$ and the density of $C_0^\infty(Q)$ in $L^2(Q)$ allows to see that $g(\eta)\in L^\infty(Q)$ for all $\eta\in L^2(Q)$. Therefore, arguing as in the proof of Theorem \ref{th2s1} we can obtain the following observability estimate 
+\begin{align}\label{obs_nl}
+	\norm{\varphi(x,0)}{L^2(\Omega)}\leq C_1\exp\left[C_2\left(1 + \frac 1T + T\norm{g}{\infty} + \norm{g}{\infty}^{\frac 23} + \mathcal K^{\frac 23}\right)\right] \intd_{\mathcal O\times(0,T)} |\varphi|^2\,dxdt, 
+\end{align}
+where $\varphi$ is the solution to the adjoint system associated to \eqref{heat_lin}. This in particular implies that \eqref{heat_lin} is null-controllable in time $T>0$ with a control $v_\eta\in L^2(\mathcal O\times(0,T))$ satisfying
+\begin{align*}
+	\norm{v_\eta}{L^2(\mathcal O\times(0,T)}\leq\sqrt{\mathcal C}\norm{y_0}{L^2(\Omega)}, \;\;\; \forall\,\eta\in L^2(Q),
+\end{align*}
+where with $\mathcal C$ we indicate the constant in the inequality \eqref{obs_nl}. 
+	
+Consider the map $\Lambda: L^2(Q)\to L^2(Q)$ defined by $\Lambda\eta = y_\eta$, where $y_\eta$ is the solution to \eqref{heat_lin} corresponding to the control $v_\eta$. By means of \eqref{y_reg}, we deduce that $\Lambda$ maps $L^2(Q)$ into a bounded set of $L^2(0,T,H^1_0(\Omega))\cap H^1(0,T,H^{-1}(\Omega))$. This space being compactly embedded in $L^2(Q)$, there exists a fixed compact set $W$ such that $\Lambda(L^2(Q))\subset W$. Moreover, it can be readily verified that $\Lambda$ is also continuous from $L^2(Q)$ into $L^2(Q)$. In view of that, applying the Schauder fixed point theorem and proceeding like in the conclusion of the proof of Theorem \ref{control_thm2}, the result follows immediately.
+\end{proof}
 
-\section{Additional comments and open problems}\label{comments_sec}
+We conclude this section by mentioning that, in the same spirit of Theorem \ref{control_thm_nl}, it is possible to address also more general versions of \eqref{heat_nl} in which the nonlinearity is included in the non-local term, that is, problems in the form
+\begin{align}\label{heat_nl_gen}
+	\begin{cases}
+		\D y_t - \Delta y + \int_\Omega K(x,\theta,t)f\big[y(\theta,t)\big]\,d\theta = v\mathbf{1}_{\mathcal O}, & (x,t)\in Q
+		\\
+		y = 0, & (x,t)\in\Sigma
+		\\
+		y(x,0) = y_0(x), & x\in\Omega,
+	\end{cases}
+\end{align}
+where $f$ has the same regularity properties as in Theorem \ref{control_thm_nl}. 
 
-\subsection{On the necessity of hypothesis \eqref{K_est_gen}}
+For doing that, we just need to prove a Carleman estimate for the linearized adjoint system corresponding to \eqref{heat_nl_gen}, which reads as
+\begin{align}\label{heat_nl_gen_adj}
+	\begin{cases}
+		\D -\varphi_t - \Delta \varphi + g(\eta)\int_\Omega K(\theta,x,t)\varphi(\theta,t)\,d\theta = 0, & (x,t)\in Q
+		\\
+		\varphi = 0, & (x,t)\in\Sigma
+		\\
+		\varphi(x,0) = \varphi_T(x), & x\in\Omega,
+	\end{cases}
+\end{align}
+to obtain from there an observability inequality for \eqref{heat_nl_gen_adj} and conclude by following the same argument as in Theorem \ref{control_thm_nl}.
+
+The proof of such Carleman inequality is a straightforward adaptation of Proposition \ref{carleman_phi_prop}. Indeed, it is sufficient to notice that, in this case, \eqref{carleman_prel} becomes
+\begin{align*}
+	\mathcal{I}(\varphi) &\leq C \left[s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt + \intd_Q e^{-2s\alpha}\left|g(\eta)\int_{\Omega} K(\theta,x,t)\varphi(\theta,t)\,d\theta\,\right|^2\,dx\,dt\right]
+	\\
+	&\leq C \left[s^3\lambda^4\intd_{\mathcal O\times(0,T)} e^{-2s\alpha}\xi^3 |\varphi|^2\,dx\,dt + \norm{g}{\infty}^2\intd_Q e^{-2s\alpha}\left|\int_{\Omega} K(\theta,x,t)\varphi(\theta,t)\,d\theta\,\right|^2\,dx\,dt\right],
+\end{align*}
+since $g(\eta)\in L^\infty(Q)$. From here, the remaining of the proof is the same as we did before, with the only change that we now have to choose 
+\begin{align*}
+	s\geq \varrho_3\left[T+T^2+\left(\mathcal K\norm{g}{\infty}\right)^{\frac 23}T^2\right],
+\end{align*}
+with $\varrho_3$ a positive constant only depending on $\Omega$ and $\mathcal O$. In view of that, the observability estimate that we obtain is in the form
+\begin{align}\label{obs_nl2}
+	\norm{\varphi(x,0)}{L^2(\Omega)}\leq C_1\exp\left[C_2\left(1 + \frac 1T + T\left(\mathcal K\norm{g}{\infty}\right)^{\frac 23}\right)\right] \intd_{\mathcal O\times(0,T)} |\varphi|^2\,dxdt.
+\end{align}
+
+From \eqref{obs_nl2}, the null controllability in time $T>0$ for \eqref{heat_nl_gen_adj} follows immediately by means of a classical argument.
+
+
+	
+
+\section{On the necessity of hypothesis \eqref{K_est_gen}}\label{comments_sec}
 
 As anticipated in Remark \ref{rem_lambda}, hypotheses on the kernel $K$ more general that just being bounded are necessary. Indeed, not imposing any assumption further than $\norm{K}{\infty}<+\infty$ may lead to the failure of the unique continuation of the solutions to the adjoint system. In fact, in absence of additional conditions on the kernel, it is possible to provide counterexamples where unique continuation (which is essential for obtaining controllability results) fails.
 
@@ -681,76 +669,21 @@ In other words, we constructed an example of a function which is solution to \eq
 To avoid these kind of situations, and to ensure the validity of unique continuation properties, in some recent works the following solutions have been proposed:
 \begin{itemize}
 	\item analyticity assumptions on the kernel, that allow to see it as a compact perturbation of the heat operator (\cite{fernandez2016null});
-	\item kernels in the form $k(x,\theta)=\alpha(x)\beta(\theta)$, with $\alpha$ not vanishing in any subinterval of $(0,1)$, which preserve the unique continuation for the solutions (\cite[Lemma 2.15]{micu2017local}).
+	\item kernels in the form $k(x,\theta)=\alpha(x)\beta(\theta)$, with $\alpha$ not vanishing in any subinterval of $(0,1)$, which preserve the unique continuation for the solutions (\cite[Lemma 2.15]{micu2018local}).
 \end{itemize}
 
 In the present work, thanks to \eqref{K_est_gen} and by taking advantage of the weight function $\alpha$, we are able to absorb the nonlocal term in the terms on the left-hand side of \eqref{carleman_prel}, then obtaining a nice Carleman estimate for the solution to \eqref{e11s1}. This, of course, gives us the unique continuation and allow us to prove an observability inequality, therefore a controllability result.
 In conclusion, from the discussion above it is clear that kernels that are merely bounded cannot be handled when dealing with controllability problems for nonlocal equations of the type of \eqref{e1s1}. Instead, some additional condition has to be imposed. In this paper, we propose to consider kernels depending also on the time variables, and to exploit the structure of the weights in the Carleman estimate. Nonetheless, we do not know whether our approach is the best possible or if, instead, sharper results can be obtained.
 
-\subsection{Extension to semilinear problems}
-
-The approach of Theorem \ref{control_thm} may be combined with the methodology presented in \cite{fabre1995approximate,fernandez1997null} to deduce similar controllability results for the semilinear heat equation with globally Lipschitz nonlinearity  
-\begin{align}\label{heat_nl}
-	\begin{cases}
-		\D y_t - \Delta y + \int_\Omega K(x,\theta,t)y(\theta,t)\,d\theta = f(y) + v\mathbf{1}_{\mathcal O}, & (x,t)\in Q
-		\\
-		y = 0, & (x,t)\in\Sigma
-		\\
-		y(x,0) = y_0(x), & x\in\Omega.
-	\end{cases}
-\end{align}
-
-In the same spirit, we believe that it should not be difficult to deal with modifications of problem \eqref{heat_nl} in which the nonlinearity is included in the kernel, that is, problems in the form
-\begin{align*}
-	\begin{cases}
-		\D y_t - \Delta y + \int_\Omega K(x,\theta,t)f\big[y(\theta,t)\big]\,d\theta = v\mathbf{1}_{\mathcal O}, & (x,t)\in Q
-		\\
-		y = 0, & (x,t)\in\Sigma
-		\\
-		y(x,0) = y_0(x), & x\in\Omega.
-	\end{cases}
-\end{align*}
-
 \section*{Acknowledgements} 
-The work of Umberto Biccari was partially supported by the Advanced Grant DYCON (Dynamic Control) of the European Research Council Executive Agency, by the MTM2014-52347 Grant of the MINECO (Spain) and by the Air Force Office of Scientific Research under the Award No: FA9550-15-1-0027.
-
-The work of V\'ictor Hern\'andez-Santamar\'ia was partially supported by the Advanced Grant DYCON (Dynamic Control) of the European Research Council Executive Agency.
+This project has received funding from the European Research Council (ERC) under the European Union's Horizon 2020 research and innovation programme (grant agreement No. 694126-DyCon) and from the MTM2017-92996 grant of MINECO (Spain). The work of the first author was partially supported by the Grants MTM2014-52347 of MINECO (Spain) and FA9550-18-1-0242 of AFOSR (U.S.). 
 
 The authors wish to thank Prof. Enrique Zuazua (Universidad Aut\'onoma de Madrid and DeustoTech) for interesting discussions on the topic of this paper. Thanks also to Cristhian Montoya (Universidad Nacional Aut\'onoma de M\'exico) for his valuable comments that helped to improve this manuscript. Finally, a special thanks goes to Prof. Patrick G\'erard (Universit\'e Paris-Sud) for suggesting the nice counterexample that helps confirming the necessity of certain hypothesis of our work.
 
-\section*{Bibliography} 
-\begin{thebibliography}{99}
+\section*{References}
 
-\bibitem{fabre1995approximate} C. Fabre, J.-P. Puel and E. Zuazua. \emph{Approximate controllability of the semilinear heat equation}. Proc. Roy. Soc. Edinburgh Sec. A, 125.1 (1995), 31-61.
+\bibliography{biblio}
 
-\bibitem{fernandez1997null} E. Fern\'andez-Cara. \emph{Null controllability of the semilinear heat equation}. ESAIM: COCV, 2 (1997), 87-103.
-
-\bibitem{fernandez2006global} E. Fern\'andez-Cara and S. Guerrero. \emph{Global Carleman inequalities for parabolic systems and applications to controllability}. SIAM J. Control Optim. 45.4 (2006): 1395-1446.
-
-\bibitem{fernandez2004local} E. Fern{\'a}ndez-Cara, S. Guerrero, O. Imanuvilov and J.-P. Puel. \emph{Local exact controllability of the Navier-Stokes system}. J. Math. Pures Appl., 83.12 (2004), 1501-1542.
-
-\bibitem{fernandez2016null} E. Fern\'andez-Cara, Q. L\"u and E. Zuazua. \emph{Null controllability of linear heat and wave equations with nonlocal spatial terms}. SIAM J. Control Optim., 54.4 (2016), 2009-2019.
-
-\bibitem{fursikov1996controllability} A. Fursikov and O. Imanuvilov. \emph{Controllability of evolution equations}. Lect. Note Series 34. Res. Inst. Math., GARC, Seoul National University (1996).
-
-\bibitem{gueye2013insensitizing} M. Gueye. \emph{Insensitizing controls for the Navier-Stokes equations}. Ann. I.H. Poincar\'e, AN 30.5 (2013), 825-844.
-
-\bibitem{kakutani1941generalization} S. Kakutani. \emph{A Generalization of Brouwer's fixed point Theorem}. Duke Math. J., 8.3 (1941),  457-459. 
-
-\bibitem{lorenzi2011two} A. Lorenzi. \emph{Two severely ill-posed linear parabolic problems}. AIP Conference Proceedings, 1329.1 (2011), 150-169.
-
-\bibitem{micu2017local} S. Micu and T. Takahashi. \emph{Local controllability to stationary trajectories of a one-dimensional simplified model arising in turbulence}. Hal preprint, Hal Id: hal-01572317 (2017).
-
-\bibitem{montoya2017robust} C. Montoya and L. de Teresa. \emph{Robust Stackelberg controllability for the Navier-Stokes equations}. arXiv preprint arXiv:1708.04648 (2017).
-
-\bibitem{lissy2017internal} P. Lissy and E. Zuazua. \emph{Internal controllability for parabolic systems involving analytic non-local terms}. Hal preprint, Hal Id: hal-01574999 (2017).
-
-\bibitem{okubo2013diffusion} A. Okubo and S.A. Levin. \emph{Diffusion and ecological problems: modern perspectives}. Springer Science \& Business Media, 2013.
-
-\bibitem{simon1986compact} J. Simon. \emph{Compact sets in the space $L^p(0,T;B)$}. Ann. Mat. Pura Appl., 146.1 (1986), 65-96. 
-
-\bibitem{tao2016null} Q. Tao and H. Gao. \emph{On the null controllability of heat equation with memory}. J. Math. Anal. Appl., 440.1 (2016), 1-13.
-\end{thebibliography}
 \end{document}
 
 
